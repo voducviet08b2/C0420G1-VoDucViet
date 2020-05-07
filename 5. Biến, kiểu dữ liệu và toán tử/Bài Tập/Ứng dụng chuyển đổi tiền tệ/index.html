@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+  
+        <label for="">Amount</label><br>
+        <input type="text" id="input" ><br>
+       <label for="">From currency</label>
+       <select name="" id="">
+           <option value="VND">VND</option>
+       </select>
+       <label for="">To currency</label>
+       <select name="" id="">
+        <option value="VND">USD</option>
+    </select>
+    <button id="recharge" >Recharge</button>
+    <div id="result"></div>
+  
+   
+</body>
+<script>
+    let button=document.getElementById("recharge");
+    let input=document.getElementById("input");
+    let result =document.getElementById("result");
+    button.onclick=function(){
+       
+        result.innerHTML=parseInt(input.value)/23000+"$";
+    };
+  
+</script>
+</html>

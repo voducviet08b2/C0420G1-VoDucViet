@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+   
+        <input type="text" id="input1">
+        <input type="text" id="input2">
+        <br>
+        <input type="submit" value="Cộng" id="cong">
+        <input type="submit" value="Trừ" id="tru">
+        <input type="submit" value="Nhân" id="nhan">
+        <input type="submit" value="Chia" id="chia">
+        <div id="result"></div>
+  
+    <script>
+        var input1=document.getElementById("input1");
+        var input2=document.getElementById("input2");
+        var cong=document.getElementById("cong");
+        var tru=document.getElementById("tru");
+        var nhan=document.getElementById("nhan");
+        var chia=document.getElementById("chia");
+        var result=document.getElementById("result");
+        cong.addEventListener("click",cong2so);
+        tru.addEventListener("click",tru2so);
+        nhan.addEventListener("click",nhan2so);
+        chia.addEventListener("click",chia2so);
+        function cong2so(){
+            result.innerHTML=parseInt(input1.value)+parseInt(input2.value);
+        }
+        function tru2so(){
+            result.innerHTML=parseInt(input1.value)-parseInt(input2.value);
+        }
+        function nhan2so(){
+            result.innerHTML=parseInt(input1.value)*parseInt(input2.value);
+        }
+        function chia2so(){
+            result.innerHTML=parseInt(input1.value)/parseInt(input2.value);
+        }
+   
+       
+    </script>
+</body>
+</html>
