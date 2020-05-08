@@ -25,22 +25,41 @@
         var nhan=document.getElementById("nhan");
         var chia=document.getElementById("chia");
         var result=document.getElementById("result");
-        cong.addEventListener("click",cong2so);
-        tru.addEventListener("click",tru2so);
-        nhan.addEventListener("click",nhan2so);
-        chia.addEventListener("click",chia2so);
-        function cong2so(){
-            result.innerHTML=parseInt(input1.value)+parseInt(input2.value);
-        }
-        function tru2so(){
-            result.innerHTML=parseInt(input1.value)-parseInt(input2.value);
-        }
-        function nhan2so(){
-            result.innerHTML=parseInt(input1.value)*parseInt(input2.value);
-        }
-        function chia2so(){
-            result.innerHTML=parseInt(input1.value)/parseInt(input2.value);
-        }
+        var arr=[cong,tru,nhan,chia];
+        for(i=0;i<arr.length;i++){
+            arr[i].addEventListener("click",function(){
+              switch(this){
+                  case cong:
+                  result.innerHTML=parseInt(input1.value)+parseInt(input2.value);
+                  break;
+                  case tru:
+                  result.innerHTML=parseInt(input1.value)-parseInt(input2.value);
+                  break;
+                  case nhan:
+                  result.innerHTML=parseInt(input1.value)*parseInt(input2.value);
+                  break;
+                  case chia:
+                  result.innerHTML=parseInt(input1.value)/parseInt(input2.value);
+                  break;
+              }
+            });
+         }
+        // cong.addEventListener("click",cong2so);
+        // tru.addEventListener("click",tru2so);
+        // nhan.addEventListener("click",nhan2so);
+        // chia.addEventListener("click",chia2so);
+        // function cong2so(){
+        //     result.innerHTML=parseInt(input1.value)+parseInt(input2.value);
+        // }
+        // function tru2so(){
+        //     result.innerHTML=parseInt(input1.value)-parseInt(input2.value);
+        // }
+        // function nhan2so(){
+        //     result.innerHTML=parseInt(input1.value)*parseInt(input2.value);
+        // }
+        // function chia2so(){
+        //     result.innerHTML=parseInt(input1.value)/parseInt(input2.value);
+        // }
    
        
     </script>
