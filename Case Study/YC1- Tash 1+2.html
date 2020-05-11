@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let name=prompt("Vui lòng nhập họ tên:");
+        let CMND=prompt("Vui lòng nhập số CMND:");
+        let birth =prompt("Vui lòng nhập ngaỳ tháng năm sinh::");
+        let email=prompt("Vui lòng nhập email:");
+        let address=prompt("Vui lòng nhập địa chỉ:");
+        let customerType=prompt("Vui lòng nhập Loại Customer(Diamond, Platinum, Gold, Silver, Member):");
+        let discount=prompt("Vui lòng nhập giảm giá:");
+        let quanity=prompt("Vui lòng nhập số lượng đi kèm:");
+        let lendDay=prompt("Vui lòng nhập số ngày thuê:");
+        let dichVu=prompt("Vui lòng nhập Loại dịch vụ(Villa, House, Room):");
+        let roomType=prompt("Vui lòng nhập Loại phòng thuê(Vip, Business, Normal):");
+        let moneyDichVu=(dichVu=="Villa")?500:(dichVu=="House")?300:(dichVu==Room)?100:0;
+        let moneyPay=parseInt(moneyDichVu)*parseInt(lendDay)*(1-parseInt(discount)/100);
+        document.write("Họ và Tên:"+name);
+        document.write("<br>");
+        document.write("Số CMND:"+CMND);
+        document.write("<br>");
+        document.write("Ngày sinh:"+birth);
+        document.write("<br>");
+        document.write("Email:"+email);
+        document.write("<br>");
+        document.write("Địa chỉ:"+address);
+        document.write("<br>");
+        document.write("Loại Customer:"+customerType);
+        document.write("<br>");
+        document.write("Số tiền được giảm:"+discount);
+        document.write("<br>");
+        document.write("Số người đi kèm:"+quanity);
+        document.write("<br>");
+        document.write("Số ngày thuê:"+lendDay);
+        document.write("<br>");
+        document.write("Loại Dịch Vụ:"+dichVu);
+        document.write("<br>");
+        document.write("Loại phòng thuê:"+roomType);
+        document.write("<br>");       
+        document.write("<b>Thanh Toán:</b>"+moneyPay);
+        document.write("<br>");
+        
+    </script>
+</body>
+</html>

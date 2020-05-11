@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>may-tinh</title>
+</head>
+<body>
+<table>
+    <tr>
+        <th></th>
+        <th colspan="7">
+            <input type="text" id="T">
+
+        </th>
+        <th></th>
+    </tr>
+    <tr>
+        <th></th>
+        <th>
+            <input type="button" value="1" id="n1">
+        </th>
+        <th></th>
+        <th>
+            <input type="button" value="2" id="n2">
+        </th>
+        <th></th>
+        <th>
+            <input type="button" value="3" id="n3">
+        </th>
+        <th></th>
+        <th>
+            <input type="button" value="+" id="add">
+        </th>
+
+        <th></th>
+    </tr>
+    <tr>
+        <th></th>
+        <th>
+            <input type="button" value="4" id="n4">
+        </th>
+        <th></th>
+        <th>
+            <input type="button" value="5" id="n5">
+        </th>
+        <th></th>
+        <th>
+            <input type="button" value="6" id="n6">
+        </th>
+        <th></th>
+        <th>
+            <input type="button" value="-" id="sub">
+        </th>
+
+        <th></th>
+    </tr>
+    <tr>
+        <th></th>
+        <th>
+            <input type="button" value="7" id="n7">
+        </th>
+        <th></th>
+        <th>
+            <input type="button" value="8" id="n8">
+        </th>
+        <th></th>
+        <th>
+            <input type="button" value="9" id="n9">
+        </th>
+        <th></th>
+        <th>
+            <input type="button" value="x" id="mul">
+        </th>
+
+        <th></th>
+    </tr>
+    <tr>
+        <th></th>
+        <th>
+            <input type="button" value="C" id="nC">
+        </th>
+        <th></th>
+        <th>
+            <input type="button" value="0" id="n0">
+        </th>
+        <th></th>
+        <th>
+            <input type="button" value="=" id="b">
+        </th>
+        <th></th>
+        <th>
+            <input type="button" value="/" id="div">
+        </th>
+
+        <th></th>
+    </tr>
+</table>
+<script>
+    let n1=document.getElementById('n1');
+    let n2=document.getElementById('n2');
+    let n3=document.getElementById('n3');
+    let n4=document.getElementById('n4');
+    let n5=document.getElementById('n5');
+    let n6=document.getElementById('n6');
+    let n7=document.getElementById('n7');
+    let n8=document.getElementById('n8');
+    let n9=document.getElementById('n9');
+    let n0=document.getElementById('n0');
+    let add=document.getElementById('add');
+    let sub=document.getElementById('sub');
+    let mul=document.getElementById('mul');
+    let div=document.getElementById('div');
+    let b=document.getElementById('b');
+    let t=document.getElementById('T');
+    let C=document.getElementById('nC');
+    n1.onclick=function () {
+        t.value+="1";
+    }
+    n2.onclick=function () {
+        t.value+='2';
+    }
+    n3.onclick=function () {
+        t.value+='3';
+    }
+    n4.onclick=function () {
+        t.value+='4';
+
+    }
+    n5.onclick=function () {
+        t.value+='5';
+    }
+    n6.onclick=function () {
+        t.value+='6';
+    }
+    n7.onclick=function () {
+        t.value+='7';
+    }
+    n8.onclick=function () {
+        t.value+='8';
+    }
+    n9.onclick=function () {
+        t.value+='9';
+    }
+    n0.onclick=function () {
+        t.value+='0';
+    }
+    add.onclick=function () {
+        t.value+='+';
+    }
+    sub.onclick=function () {
+        t.value+='-';
+    }
+    mul.onclick=function () {
+        t.value+='*';
+    }
+    div.onclick=function () {
+        t.value+='/';
+    }
+    b.onclick=function () {
+        t.value=eval(t.value);
+    }
+    C.onclick=function () {
+        t.value="";
+    }
+
+
+</script>
+</body>
+</html>

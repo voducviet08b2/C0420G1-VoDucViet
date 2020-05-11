@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var name = "";
+      var CMND = "";
+      var birth = "";
+      var email = "";
+      var address = "";
+      var customerType = "";
+      var discount = "";
+      var quanity = "";
+      var lendDay = "";
+      var dichVu = "";
+      var roomType = "";
+      let moneyDichVu = "";
+      let moneyPay = "";
+      let sumDiscount=0;
+      let age=0;
+      //input thông tin
+
+      function inputThongTin() {
+        name = prompt("Vui lòng nhập họ tên:");
+        CMND = prompt("Vui lòng nhập số CMND:");
+        birth = prompt("Vui lòng nhập năm sinh::");
+        email = prompt("Vui lòng nhập email:");
+        address = prompt("Vui lòng nhập địa chỉ:");
+        customerType = prompt(
+          "Vui lòng nhập Loại Customer(Diamond, Platinum, Gold, Silver, Member):"
+        );
+        discount = prompt("Vui lòng nhập giảm giá:");
+        quanity = prompt("Vui lòng nhập số lượng đi kèm:");
+        lendDay = prompt("Vui lòng nhập số ngày thuê:");
+        dichVu = prompt("Vui lòng nhập Loại dịch vụ(Villa, House, Room):");
+        roomType = prompt(
+          "Vui lòng nhập Loại phòng thuê(Vip, Business, Normal):"
+        );
+
+        moneyDichVu =
+          dichVu == "Villa"
+            ? 500
+            : dichVu == "House"
+            ? 300
+            : dichVu == "Room"
+            ? 100
+            : 0;
+
+       
+        //giam gia theo address
+        if(address=="Đà Nẵng"){
+          sumDiscount+=20;
+        }else if(address=="Hue"){
+          sumDiscount+=10;
+        }else if(address=="Quảng Nam"){
+          sumDiscount+=5;
+        }
+        //giam gia theo ngay thue
+        if(parseInt(lendDay)>7)
+          {
+            sumDiscount+=30;
+          }else if(parseInt(lendDay<7)&&parseInt(lendDay)>=5){
+            sumDiscount+=20;
+          }else if(parseInt(lendDay<5)&&parseInt(lendDay)>=2){
+            sumDiscount+=10;
+       }
+       //giam gia theo service
+       if(customerType=="Diamond"){
+         sumDiscount+=15;
+       }else if(customerType=="Platinum"){
+        sumDiscount+=10;
+       }else if(customerType=="Gold"){
+        sumDiscount+=5;
+       }else if(customerType=="Platinum"){
+        sumDiscount+=2;
+       }
+       age=2020-(new Date(birth).getFullYear());
+       //Giam gia theo tuoi va dia chi
+       if(age>=30){
+         sumDiscount+=2;
+       }else if(age<30&&age>=20){
+        sumDiscount+=1;
+       }
+       
+       moneyPay =(
+          parseInt(moneyDichVu) *
+          parseInt(lendDay) *
+          (1 - discount / 100))-sumDiscount;
+       console.log(age);
+          takeChoice();
+      }
+
+      //Show thông tin
+
+      function showInfo() {
+        document.write("Họ và Tên:" + name);
+        document.write("<br>");
+        document.write("Số CMND:" + CMND);
+        document.write("<br>");
+        document.write("Ngày sinh:" + birth);
+        document.write("<br>");
+        document.write("Email:" + email);
+        document.write("<br>");
+        document.write("Địa chỉ:" + address);
+        document.write("<br>");
+        document.write("Loại Customer:" + customerType);
+        document.write("<br>");
+        document.write("Số tiền được giảm:" + discount);
+        document.write("<br>");
+        document.write("Số người đi kèm:" + quanity);
+        document.write("<br>");
+        document.write("Số ngày thuê:" + lendDay);
+        document.write("<br>");
+        document.write("Loại Dịch Vụ:" + dichVu);
+        document.write("<br>");
+        document.write("Loại phòng thuê:" + roomType);
+        document.write("<br>");
+        document.write("/////////////////////////////////");
+        
+      }
+
+      //Đưa ra lựa chọn
+
+      function takeChoice(){
+        let choice = prompt(
+        "0. Input New Customer \n 1. Show Information Customer \n 2. Edit Information Customer \n 3. Show the amount to be paid after discount",
+        "1"
+      );
+     
+      if(choice=="0"){
+        inputThongTin();
+      }else if (choice == "1") {
+          showInfo();
+      } else if (choice == "2") {
+        inputThongTin();
+        showInfo();
+      }else if(choice=="3"){
+        alert("Số tiền phải trả là: "+moneyPay);
+        takeChoice();
+        
+      }
+
+      }
+      takeChoice();
+      
+    </script>
+  </body>
+</html>

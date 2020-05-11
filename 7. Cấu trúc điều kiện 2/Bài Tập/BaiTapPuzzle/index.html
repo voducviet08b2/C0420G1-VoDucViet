@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <img id="img1" src="ban1-1.PNG"  alt="" width="600px">
+    <br><br>
+    <img id="img2" src="ban2-1.PNG" alt="" width="600px">
+    <br><br>
+    <img id="img3" src="ban3-1.PNG" alt="" width="600px">
+</body>
+<style>
+    img{
+        -webkit-box-shadow: 10px 10px 15px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: 10px 10px 15px 0px rgba(0,0,0,0.75);
+box-shadow: 10px 10px 15px 0px rgba(0,0,0,0.75);
+    }
+    .bingo{
+        -webkit-box-shadow: 10px 10px 15px 0px rgba(20,168,7,1);
+-moz-box-shadow: 10px 10px 15px 0px rgba(20,168,7,1);
+box-shadow: 10px 10px 15px 0px rgba(20,168,7,1);
+
+    }
+</style>
+<script>
+    let img1=document.getElementById("img1");
+    let img2=document.getElementById("img2");
+    let img3=document.getElementById("img3");
+    let i=1;
+    let j=1;
+    let k=1;
+    let imgAll=document.getElementsByTagName("img");
+    console.log(imgAll[0]);
+    img1.addEventListener("click",clickImgOne);
+    function clickImgOne(){   
+        
+        img1.src="ban"+i+"-1.png";
+        i++;
+        if(i==4){
+            i=1;
+           
+        }
+        check();
+    }
+
+    img2.addEventListener("click",clickImgTwo);
+    function clickImgTwo(){   
+       
+        img2.src="ban"+j+"-2.png";
+        j++;
+        if(j==4){
+            j=1;
+        }
+        check();
+    }
+    img3.addEventListener("click",clickImgThird);
+    function clickImgThird(){   
+        
+        img3.src="ban"+k+"-3.png";
+        k++;
+        if(k==4){
+            k=1;
+        }
+        check();
+    }
+    function check(){
+        if(i==j&&j==k){
+           for(a=0;a<=imgAll.length;a++){
+               imgAll[a].classList.add("bingo");
+           }        
+        }else {
+            for(a=0;a<=imgAll.length;a++){
+               imgAll[a].classList.remove("bingo");
+           }       
+        }
+    }
+  
+</script>
+</html>
