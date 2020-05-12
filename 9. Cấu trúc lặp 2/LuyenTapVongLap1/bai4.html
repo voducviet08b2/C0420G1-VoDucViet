@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let n0=0;
+        let n1=1;
+        
+        for(i=0;i<20;i++){
+        n3=n0+n1;
+        if(n3%5==0){
+            console.log("số chia hết cho 5 là:" + n3);
+            break;
+        }
+        console.log(n3);
+        n0=n1;
+        n1=n3;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let name = prompt("Vui lòng nhập họ tên:");
+      let CMND = prompt("Vui lòng nhập số CMND:");
+      while (testCMND(CMND) == false) {
+        CMND = prompt("Vui lòng nhập lại số CMND:");
+      }
+      let birth = prompt("Vui lòng nhập ngaỳ tháng năm sinh::");
+      while(testBirthday(birth)!=true){
+        birth = prompt("Vui lòng nhập lại ngaỳ tháng năm sinh::");
+      }
+      let email = prompt("Vui lòng nhập lại email:");
+      while (testEmail(email) != true) {
+        email = prompt("Vui lòng nhập email:");
+      }
+      let address = prompt("Vui lòng nhập địa chỉ:");
+      let customerType = prompt(
+        "Vui lòng nhập Loại Customer(Diamond, Platinum, Gold, Silver, Member):"
+      );
+      let discount = prompt("Vui lòng nhập giảm giá:");
+      while (testNumber(discount) != true) {
+        discount = prompt("Vui lòng nhập lại giảm giá:");
+      }
+      let quanity = prompt("Vui lòng nhập số lượng đi kèm:");
+      while (testNumber(quanity) != true) {
+        quanity = prompt("Vui lòng nhập lại số lượng đi kèm:");
+      }
+      let lendDay = prompt("Vui lòng nhập số ngày thuê:");
+      while (testNumber(lendDay) != true) {
+        lendDay = prompt("Vui lòng nhập lại số ngày thuê:");
+      }
+      let dichVu = prompt("Vui lòng nhập Loại dịch vụ(Villa, House, Room):");
+      let roomType = prompt(
+        "Vui lòng nhập Loại phòng thuê(Vip, Business, Normal):"
+      );
+
+      // document.write("Họ và Tên:"+name);
+      // document.write("<br>");
+      // document.write("Số CMND:"+CMND);
+      // document.write("<br>");
+      // document.write("Ngày sinh:"+birth);
+      // document.write("<br>");
+      // document.write("Email:"+email);
+      // document.write("<br>");
+      // document.write("Địa chỉ:"+address);
+      // document.write("<br>");
+      // document.write("Loại Customer:"+customerType);
+      // document.write("<br>");
+      // document.write("Số tiền được giảm:"+discount);
+      // document.write("<br>");
+      // document.write("Số người đi kèm:"+quanity);
+      // document.write("<br>");
+      // document.write("Số ngày thuê:"+lendDay);
+      // document.write("<br>");
+      // document.write("Loại Dịch Vụ:"+dichVu);
+      // document.write("<br>");
+      // document.write("Loại phòng thuê:"+roomType);
+      // document.write("<br>");
+      // document.write("<b>Thanh Toán:</b>"+moneyPay);
+      // document.write("<br>");
+      function testCMND(str) {
+        if (str.length != 8) {
+          return false;
+        }
+        let a = parseInt(str);
+        if (isNaN(a)) {
+          return false;
+        }
+        return true;
+      }
+      function testEmail(str) {
+        var dem = 0;
+        for (i = 0; i < str.length; i++) {
+          if (str[i] == "@") {
+            dem++;
+          } else if (str[i] == ".") {
+            dem++;
+          }
+        }
+        if (dem == 2) {
+          return true;
+        } else {
+          return false;
+        }
+      }
+      function testBirthday(str){
+        let dem=0;
+        for(i=0;i<str.length;i++){
+            if(str[i]=='/'){
+                dem++;
+            }
+        }
+        if(dem!=2){
+            return false;
+        }
+        if(isNaN(parseInt(str[0]))||isNaN(parseInt(str[1]))||isNaN(parseInt(str[3]))||isNaN(parseInt(str[4]))||isNaN(parseInt(str[6]))||isNaN(parseInt(str[7]))||isNaN(parseInt(str[8]))||isNaN(parseInt(str[9]))){
+            return false;
+        }
+        return true;
+      }
+
+      function testNumber(num){
+        if(isNaN(parseInt(num))){
+          return false;
+        }
+        return true;
+      }
+    </script>
+  </body>
+</html>

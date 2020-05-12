@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    tr,td{
+        padding: 5px;
+    }
+</style>
+<body>
+    <!-- <table border="1" style="border-collapse: collapse;">
+        <tr>
+            <td>1x1=1</td>
+            <td>2x1=1</td>
+        </tr>
+
+        <tr>
+            <td>1x2=2</td>
+            <td>2x2=4</td>
+        </tr>
+    </table> -->
+</body>
+<script>
+   
+    let table= '<table border="1" style="border-collapse: collapse;">';
+    // table+="<tr>";
+    // table+='<td>1x1=1</td>';
+    // table+='<td>2x1=1</td>';
+    // table+="</tr>";
+    // table+="<tr>";
+    // table+='<td>1x2=2</td>';
+    // table+='<td>2x2=4</td>';
+    // table+="</tr>";
+        for(i=1;i<10;i++){
+            table+="<tr>";
+        for(j=1;j<10;j++){
+            
+                table+='<td>'+i+'x'+j+'='+i*j+'</td>';
+               
+        }
+        table+="</tr>";
+    }
+    document.write(table);
+</script>
+</html>
