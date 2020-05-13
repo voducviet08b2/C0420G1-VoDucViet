@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button onclick="gameBegin()">Chơi lại</button>
+    <script>
+      function gameBegin() {
+        let from = prompt("Nhập số bắt đầu:");
+        let to = prompt("Nhập số kết thúc:");
+
+        let a = Math.floor(Math.random() * 100);
+        while (a < from || a > to) {
+          a = Math.floor(Math.random() * 100);
+        }
+        console.log(a);
+        for (i = 0; i < 3; i++) {
+          let guess = prompt("Nhập số bạn chọn:");
+          if (guess == a) {
+            alert("Bạn đã đoán đúng");
+            break;
+          } else if (guess < a) {
+            alert("Nhỏ hơn. \n Bạn còn " + (2 - i) + " lần đoán");
+          } else if (guess > a) {
+            alert("Lớn hơn. \n Bạn còn " + (2 - i) + " lần đoán");
+          }
+        }
+      }
+    </script>
+  </body>
+</html>
