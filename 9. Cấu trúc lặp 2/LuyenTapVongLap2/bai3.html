@@ -2,77 +2,46 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>InTamGiacVuong</title>
 </head>
 <body>
+    <h1 id="result"></h1>
     <script>
-
-for(let i=0 ; i<=6;i++)
-    {
-        for(let j=0;j<=6;j++)
-        {
-            if(j<=i)
-            {
-                document.write("*");
+        let result = document.getElementById("result");
+        for (let i=1;i<=5;i++) {
+            for (let j=1;j<=i;j++) {
+                result.textContent = result.textContent + "*";
             }
+            result.textContent = result.textContent + "<br>";
         }
-        document.write("<br>")
-    }
-document.write("<br>");
-    // Tương tự :
-    for(let i=0;i<=6;i++)
-    {
-        for(let j=0;j<=6;j++)
-        {
-            if(j>=i)
-            {
-                document.write("*")
+        result.textContent = result.textContent + "<br>";
+        for (let i=5;i>=1;i--) {
+            for (let j=1;j<=i;j++) {
+                result.textContent = result.textContent + "*";
             }
-            else
-            {
-                document.write("&ensp;")
+            result.textContent = result.textContent + "<br>";
+        }
+        result.textContent = result.textContent + "<br>";
+        for (let i=1;i<=5;i++) {
+            for (let j=5;j>i;j--) {
+                result.textContent = result.textContent + "&ensp;";
             }
-        }
-        document.write("<br>")
-    }
-    document.write("<br>");
-    for(let i=0;i<=5;i++)
-    {
-        for(let j=0;j<=5;j++)
-        {
-            if(j>=5-i) // tổng quát là n-i
-            {
-                document.write("*")
+            for (j=1;j<=i;j++) {
+                result.textContent = result.textContent + "*";
             }
-            else
-            {
-                document.write("&ensp;")
+            result.textContent = result.textContent + "<br>";
+        }
+        result.textContent = result.textContent + "<br>";
+        for (let i=5;i>=1;i--) {
+            for (let j=5;j>i;j--) {
+                result.textContent = result.textContent + "&ensp;";
             }
+            for (j=1;j<=i;j++) {
+                result.textContent = result.textContent + "*";
+            }
+            result.textContent = result.textContent + "<br>";
         }
-        document.write("<br>");
-    }
-    document.write("<br>");
-    document.write("<br>");
-    document.write("<br>");
-    for(let i=0;i<=5;i++)
-    {
-    for (let j=0;j<=5;j++)
-    {
-        if(j<=5-i)
-        {
-            document.write("*")
-        }
-        else
-        {
-            document.write("&ensp;");
-        }
-    }
-        document.write("<br>");
-    }
-    document.write("<br>");
-
-
+        result.innerHTML = result.textContent;
     </script>
 </body>
 </html>

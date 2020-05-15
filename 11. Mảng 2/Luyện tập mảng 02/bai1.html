@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>2-dimensional array initialization</title>
+</head>
+<body>
+    <h3 id = "result"></h3>
+    <script>
+        let num1 = prompt("Nhập row của mảng :")*1;
+        let num2 = prompt("Nhập row của mảng :")*1;
+        let array = new Array();
+        let result = document.getElementById("result");
+        let str = "",str1 = "";
+        for (let i=0;i<num1;i++) {
+            str1 += "Row " + i + ":<br>";
+            array[i] = new Array();
+            for (let j=0;j<num2;j++) {
+                array[i][j] = Math.round(Math.random()*100);
+                str += array[i][j] + "&ensp;&ensp;";
+                str1 += array[i][j] + "<br>";
+            }
+            str += "<br>";
+        }
+        result.innerHTML = str + str1;
+    </script>
+</body>
+</html>

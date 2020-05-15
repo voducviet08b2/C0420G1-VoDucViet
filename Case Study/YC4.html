@@ -56,6 +56,9 @@
           let ten=prompt("Chọn Tên muốn xóa:");
           let arr3=[];
           for(j=0;j<arr2.length;j++){
+              if(j==ten){
+                  continue;
+              }
             arr3.push(arr2[j]);
           }
           data1="";

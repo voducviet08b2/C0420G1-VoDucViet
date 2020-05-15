@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let sub;
+        let a=[1,2,3,4,2,4,88,44,32,4];
+        for(i=0;i<a.length-1;i++)
+            for(j=i+1;j<a.length;j++){
+                if(a[i]<a[j]){
+                    sub=a[i];a[i]=a[j];a[j]=sub;
+                }
+            }
+        console.log(a)
+    </script>
+</body>
+</html>
