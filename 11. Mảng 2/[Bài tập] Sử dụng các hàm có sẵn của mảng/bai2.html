@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let num="02687546"
+        let a=[];
+        for(i=0;i<num.length;i++){
+            if(num[i]%2==0&&num[i+1]%2==0){
+                a.push(num[i]);
+                a.push('-');
+            }else{
+                a.push(num[i]);
+            }
+           
+        }
+
+        console.log(a.join(""));
+    </script>
+</body>
+</html>

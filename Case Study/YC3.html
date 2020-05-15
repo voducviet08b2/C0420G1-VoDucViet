@@ -7,7 +7,43 @@
   </head>
   <body>
     <script>
-      let name = prompt("Vui lòng nhập họ tên:");
+      let names = prompt("Vui lòng nhập họ tên:");
+      var arr=[];
+      names = names.replace(/\s+/g, " ");
+      names=names.trim();
+      names=names.toLowerCase();
+      for(i=0;i<names.length;i++){
+             if(i==0){
+                 arr.push(names[i].toUpperCase());
+             }
+            else if(names[i-1]==" "){
+                arr.push(names[i].toUpperCase());
+            }else {
+                arr.push(names[i]);
+            }
+
+        }
+        //alert(arr.join(""));
+      // var string = "    This    sFSGDFGuld  become   something          else   too . ";
+      //   var arr=[];
+      //   string = string.replace(/\s+/g, " ");
+      //   string=string.trim();
+      //   string = string.toLowerCase();
+      //   console.log(string.length);
+
+      //   for(i=0;i<string.length;i++){
+      //        if(i==0){
+      //            arr.push(string[i].toUpperCase());
+      //        }
+      //       else if(string[i-1]==" "){
+      //           arr.push(string[i].toUpperCase());
+      //       }else {
+      //           arr.push(string[i]);
+      //       }
+
+      //   }
+  
+      //   console.log(arr.join(""));
       let CMND = prompt("Vui lòng nhập số CMND:");
       while (testCMND(CMND) == false) {
         CMND = prompt("Vui lòng nhập lại số CMND:");
@@ -41,30 +77,30 @@
         "Vui lòng nhập Loại phòng thuê(Vip, Business, Normal):"
       );
 
-      // document.write("Họ và Tên:"+name);
-      // document.write("<br>");
-      // document.write("Số CMND:"+CMND);
-      // document.write("<br>");
-      // document.write("Ngày sinh:"+birth);
-      // document.write("<br>");
-      // document.write("Email:"+email);
-      // document.write("<br>");
-      // document.write("Địa chỉ:"+address);
-      // document.write("<br>");
-      // document.write("Loại Customer:"+customerType);
-      // document.write("<br>");
-      // document.write("Số tiền được giảm:"+discount);
-      // document.write("<br>");
-      // document.write("Số người đi kèm:"+quanity);
-      // document.write("<br>");
-      // document.write("Số ngày thuê:"+lendDay);
-      // document.write("<br>");
-      // document.write("Loại Dịch Vụ:"+dichVu);
-      // document.write("<br>");
-      // document.write("Loại phòng thuê:"+roomType);
-      // document.write("<br>");
-      // document.write("<b>Thanh Toán:</b>"+moneyPay);
-      // document.write("<br>");
+      document.write("Họ và Tên:"+arr.join(""));
+      document.write("<br>");
+      document.write("Số CMND:"+CMND);
+      document.write("<br>");
+      document.write("Ngày sinh:"+birth);
+      document.write("<br>");
+      document.write("Email:"+email);
+      document.write("<br>");
+      document.write("Địa chỉ:"+address);
+      document.write("<br>");
+      document.write("Loại Customer:"+customerType);
+      document.write("<br>");
+      document.write("Số tiền được giảm:"+discount);
+      document.write("<br>");
+      document.write("Số người đi kèm:"+quanity);
+      document.write("<br>");
+      document.write("Số ngày thuê:"+lendDay);
+      document.write("<br>");
+      document.write("Loại Dịch Vụ:"+dichVu);
+      document.write("<br>");
+      document.write("Loại phòng thuê:"+roomType);
+      document.write("<br>");
+      document.write("<b>Thanh Toán:</b>"+moneyPay);
+      document.write("<br>");
       function testCMND(str) {
         if (str.length != 8) {
           return false;

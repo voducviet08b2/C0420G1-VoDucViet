@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <textarea name="" onkeypress="fakeText()" id="textarea" cols="30" rows="10"></textarea>
+</body>
+<script>
+    let a=[];
+    let i=0;
+    let str="Tôi là một thằng ngốc, ngu si đần độn  ";
+    let chuoi="";
+function fakeText(){
+    var x = document.getElementById("textarea");
+    
+    chuoi+=str[i];
+    x.value=chuoi;
+    i++;
+    
+    if(i==str.length-2){
+        
+        i=0;
+        
+        chuoi="";
+    }
+//    a.push(x.value);
+    
+//    console.log(a);
+//    i++;
+
+}
+
+</script>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        // let input=document.getElementById("input");
+        // let nhap=document.getElementById("nhap");
+        // let display=document.getElementById("display");
+        // let result=document.getElementById("result");
+        // let arr=[];
+        // let i=0;
+        // let data="Danh sách khách hàng:<br>";
+        // function nhapTen(value){
+        //     arr[i]=value;
+        //     i++;
+        //     input.value="";
+        //     console.log(arr);
+        // }
+        // function displayArr(){
+        //     arr.sort();
+        //     for(j=0;j<arr.length;j++){
+        //         data+=arr[j]+"<br>";
+        //     }
+        //     result.innerHTML=data;
+        // }
+        let arr=[];
+        let arr2=["Mai văn luyện","Cao Văn llong","Cao llong","Chân Văn llong","Cao Văn Việt","Văn llong","Cao","long","Chân","Mách","Lương Văn","Văn Cao",]
+        let data="";
+        let data1="";
+        let customer="";
+        let choice=prompt("1. Add new customer \n 2. Delete Customer");
+        switch(choice){
+            case "1":
+            let soluong=prompt("Số lượng khách hàng:");
+            for(i=0;i<parseInt(soluong);i++){
+                customer=prompt("Nhập tên khách hàng:");
+                arr[i]=customer;
+            }
+            arr.sort();
+            for(i=0;i<parseInt(soluong);i++){
+              
+                data+=i+". "+arr[i]+"\n";
+            }
+            alert(data);
+            break;
+            case "2":
+            for(i=0;i<arr2.length;i++){
+              data1+=i+". "+arr2[i]+"\n";
+          }
+          alert(data1);
+          let ten=prompt("Chọn Tên muốn xóa:");
+          let arr3=[];
+          for(j=0;j<arr2.length;j++){
+            arr3.push(arr2[j]);
+          }
+          data1="";
+          for(i=0;i<arr3.length;i++){
+              data1+=i+". "+arr3[i]+"\n";
+          }
+          alert(data1);
+            break;
+        }
+    </script>
+</body>
+</html>
