@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài9</title>
+</head>
+<body>
+<script>
+    function check(arr,x) {
+        let count=0;
+        for(let i=0;i<arr.length;i++)
+        {
+            if(arr[i]===x)
+            {
+                count++
+            }
+        }
+        if(count==0)
+        {
+            return -1;
+        }
+        else
+        {
+            document.write("số lần xuất hiện là "+count);
+        }
+
+    }
+    let arr=[9,9,9,4,5,6,3]
+    let x=9;
+    check(arr,x);
+</script>
+</body>
+</html>

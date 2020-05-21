@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+       let a=prompt("Nhập:")
+       let count=0;
+       for(i=0;i<Math.floor(a.length/2);i++){
+        if(a[i]!=a[a.length-1-i]){
+            
+            count++;
+        }
+       }
+       
+       if(count==0){
+           alert("Đây là chuỗi đối xứng")
+       }else if(count>0){
+        alert("Đây không phải là chuỗi đối xứng");
+       }
+    </script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài5</title>
+</head>
+<body>
+<script>
+    let star=[ "Polaris", "Aldebaran"," Deneb", "Vega", "Altair", "Dubhe","Regulus"];
+    let starGruop=[ "Ursa Minor", "Tarurus"," Cygnus", "Lyra"," Aquila", "Ursa Major" , "Leo"];
+    function findStar(String)
+    {
+        let count=0;
+        for(let i=0;i<star.length;i++)
+        {
+
+            if(star[i]===String)
+            {
+                count++;
+
+            }
+
+        }
+        if(count===0)
+        {
+            alert("ngôi sao ko có trong chùm sao");
+        }
+        else
+        {
+            for(let i=0;i<star.length;i++)
+            {
+
+                if(star[i]===String)
+                {
+                    alert(starGruop[i]);
+
+                }
+
+            }
+
+        }
+    }
+    let String ;
+    String=prompt("nhập vào tên ngồi sao");
+    findStar(String);
+</script>
+</body>
+</html>

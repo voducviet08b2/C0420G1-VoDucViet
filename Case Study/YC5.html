@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let arrListCustomers=[];
+        let i=0;
+        let char="";
+        function displayMainMenu(){
+            let choice=prompt("1. Add new Customer \n 2. Display Information Customer \n 3. Edit Information Customer \n 4. Delete Customer \n 5. Exit")
+            switch(choice){
+                case "1":
+                addCustomer();
+                break;
+                case "2":
+                displayCustomer();
+                break;
+                case "3":
+                editCustomer();
+                break;
+                case "4":
+                deleteCustomer();
+                break;
+            }
+        }
+        function deleteCustomer(){
+            let c=prompt("Nhập vào stt Customer muốn xóa:");
+            arrListCustomers.splice(c,1);
+           displayMainMenu();
+        }
+        function editCustomer(){
+            let b=prompt("Nhập vào stt Customer muốn sửa:");
+            let name=prompt("Sửa tên customer:",arrListCustomers[b][0]);
+            let cmnd=prompt("Sửa CMND customer:",arrListCustomers[b][1]);
+            arrListCustomers[b][0]=name;
+            arrListCustomers[b][1]=cmnd;
+            console.log(arrListCustomers);
+            displayMainMenu();
+        }
+        function addCustomer(){
+            let customer=prompt("Nhập tên khách hàng:");
+            let cmnd=prompt("Nhập CMND:");
+            arrListCustomers.push([]);
+            arrListCustomers[i].push(customer);
+            arrListCustomers[i].push(cmnd);
+            i++;
+            displayMainMenu();   
+        }
+        function displayInformationCustomer(){
+            let i=prompt("Chọn stt customer:");
+            let chars="";
+            chars+=i+". Name:"+arrListCustomers[i][0]+" CMND: "+arrListCustomers[i][1];
+            alert(chars);
+        }
+        function displayCustomer(){
+            char="";
+            for(i=0;i<arrListCustomers.length;i++){
+                char+=i+". ";
+                for(j=0;j<arrListCustomers[i].length;j++)
+                {   
+                    
+                    if(j%2==0){
+                       
+                        char+= ' '+arrListCustomers[i][j];
+                    }
+                    else{
+                        char+= ' '+ arrListCustomers[i][j];
+                    }
+                    
+                }
+                char+="\n";
+            }
+
+            alert(char);
+             let a=prompt("1. Quay lại menu chính \n 2. Chọn customer muốn show")
+            switch(a){
+                case "1":
+                displayMainMenu();
+                break;
+                case "2":
+                displayInformationCustomer();
+                break;
+            }
+        }
+        displayMainMenu();
+    </script>
+</body>
+</html>

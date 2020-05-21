@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Daonguoc</title>
+</head>
+<body>
+<script>
+    function daonguoc(arr) {
+        let firts=0;
+        let last=arr.length-1;
+        while (firts<last)
+        {
+            let temp=arr[firts];
+            arr[firts]=arr[last];
+            arr[last]=temp;
+            firts++;
+            last--;
+        }
+        document.write(arr);
+
+    }
+    function nhapmang(arr,n)
+    {
+        for(let i=0;i<n;i++)
+        {
+            arr[i]=prompt("nhập vào phần tử thứ" +i)
+        }
+    }
+
+    let arr=new Array();
+    let n;
+    n=prompt("nhập vào độ dài mảng")
+    nhapmang(arr,n);
+    daonguoc(arr);
+</script>
+</body>
+</html>

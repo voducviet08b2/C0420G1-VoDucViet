@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <canvas
+      id="myCanvas"
+      width="1368px"
+      height="768px"
+      style="border: 1px solid #d3d3d3;"
+    ></canvas>
+  </body>
+  <script>
+    var canvas = document.getElementById("myCanvas");
+    var context = canvas.getContext("2d");
+
+    // let x=100;
+    // function draw(x) {
+    //   var img = new Image();
+    //   img.src = "car.png";
+    //   img.onload = function () {
+    //     context.drawImage(img, x, 200, 100, 100);
+    //   };
+    // }
+    // function autoRun(){
+    //     draw(x);
+    //     x=x+5;
+    // }
+    // setInterval(autoRun,300);
+    // autoRun();
+
+    class Vehicle {
+      constructor(x, y) {
+        this.x = x;
+        this.y = y;
+        this.speed=5;
+        this.ctrl();
+        setInterval(function(){
+        car.autoRun();
+    }, 500);
+      }
+      draw() {
+        let a = this.x;
+        let b = this.y;
+        let img = new Image();
+        img.src = "car.png";
+        img.onload = function () {
+          context.drawImage(img, a, b, 100, 100);
+        };
+      }
+     
+      doiso(evt){
+        if(evt.keyCode==17){ 
+               car.speed=40;
+                               
+             }
+      }
+     ctrl(){
+        window.addEventListener("keydown",this.doiso);
+     }
+      autoRun() {
+        this.x += this.speed;
+        this.draw();
+      }
+    }
+    let car = new Vehicle(200, 200);
+    // function keyboard(evt){
+    //        if(evt.keyCode==17){
+    //            alert("control duoc nhan");
+    //        }
+    // }
+      
+       
+  </script>
+</html>

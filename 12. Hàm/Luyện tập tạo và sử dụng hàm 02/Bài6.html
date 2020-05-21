@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài6</title>
+</head>
+<body>
+<script>
+    function check(num) {
+        if(!isNaN(num))
+        {
+            num=Number.parseFloat(num);
+        }
+        if(Number.isInteger(num))
+        {
+            return true;
+        }
+        else
+            return false;
+
+    }
+    let n=prompt("nhập vào n")
+    alert(check(n));
+</script>
+</body>
+</html>

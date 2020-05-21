@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Add new product</h2>
+    <input type="text" id="input">
+    <input type="submit" id="add" onclick="addProduct(input.value)" value="Thêm mới">
+    <input type="submit" id="add" onclick="changeProduct(input.value)" value="Đồng ý sửa">
+    <h2>Display All Product</h2>
+    
+    <div id="show">
+
+    </div>
+    <script>
+        let array=["Sony Experia","Nokio 1100i"];
+        let show=document.getElementById("show");
+        let input=document.getElementById("input");
+        let submit=document.getElementById("submit");
+        let a=0;
+
+    function showList(){
+        for(i=0;i<array.length;i++){
+            show.innerHTML+='<p>'+array[i]+'</p><input type="submit" value="Sửa" onclick="getValue('+i+')"> <input type="submit" onclick="deleteProduct('+i+')" value="Xóa">';
+        }
+    }
+       
+     function addProduct(value){
+         array.push(value);
+         show.innerHTML="";
+         input.value="";
+         showList();
+     }
+     function getValue(i){
+         input.value=array[i]; 
+         a=i;   
+     }
+     function changeProduct(){
+        array[a]=input.value;
+        show.innerHTML="";
+         input.value="";
+        showList();
+     }
+     function deleteProduct(i){
+        array.splice(i,1);
+        show.innerHTML="";
+        showList();
+     }
+     showList();
+    </script>
+</body>
+</html>

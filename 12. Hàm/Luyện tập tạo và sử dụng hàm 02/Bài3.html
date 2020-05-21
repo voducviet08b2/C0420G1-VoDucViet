@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hàmtinhgiaithua</title>
+</head>
+<body>
+
+<script>
+    function giaithua(n) {
+        if(n==0||n==1)
+        {
+            return 1;
+        }
+        else
+        {
+            return n*giaithua(n-1);
+        }
+
+    }
+    let n=prompt("nhập vào n");
+    document.write(giaithua(n));
+</script>
+</body>
+</html>
