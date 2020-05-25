@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input id="check" type="checkbox" >
+    <img id="light" src="tat.gif" alt="">
+    <script>
+        let button=document.getElementById("check");
+        let light=document.getElementById("light");
+        class Button{
+            constructor(button){
+                this.button=button;
+                this.boolean==true;
+            }
+            connectToLamp(lamp){
+                this.lamp=lamp;
+            }
+            switchOn(){
+                this.lamp.On();
+            }
+            switchOff(){
+                this.lamp.Off();
+            }
+        }
+        class Lamp{
+            constructor(lamp){
+                this.lamp=lamp;
+            }
+            On(){
+                this.lamp.setAttribute("src","bat.gif")
+            }
+            Off(){
+                this.lamp.setAttribute("src","tat.gif")
+            }
+        }
+        let congtac=new Button(button);  
+        let lamp=new Lamp(light);
+        congtac.connectToLamp(lamp);
+       
+       congtac.switchOn();
+        congtac.button.onclick=function(){
+            if(congtac.boolean){
+                congtac.switchOn();
+                congtac.boolean=false;
+            }else {
+                congtac.switchOff();
+                congtac.boolean=true;
+            }
+        }
+        //  function check(){
+        //     if(button.checked){
+        //     light.setAttribute("src","bat.gif")
+        //     }else {
+        //         light.setAttribute("src","tat.gif")
+        //     }
+        //  }
+    </script>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let listCustomer=[];
+       
+class Customer{
+    constructor(name,cmnd,birth,email,address,customerType,discount,countPerson,dayRent,serviceType,roomType){
+        this.name=name;
+        this.cmnd=cmnd;
+        this.birth=birth;
+        this.email=email;
+        this.address=address;
+        this.customerType=customerType;
+        this.discount=discount;
+        this.countPerson=countPerson;
+        this.dayRent=dayRent;
+        this.serviceType=serviceType;
+        this.roomType=roomType;
+    }
+    getName(){
+       return this.name;
+    }
+    getName(){
+       return this.cmnd;
+    }
+    getName(){
+       return this.birth;
+    }
+    getName(){
+     return this.address;
+    }
+    getName(){
+     return this.customerType;
+    }
+    getName(){
+     return this.discount;
+    }
+    getName(){
+       return this.countPerson;
+    }
+    getName(){
+       return this.dayRent;
+    }
+    getName(){
+        return this.serviceType;
+    }
+    getName(){
+        return this.roomType;
+    }
+    setName(name){
+        this.name=name;
+    }
+    setName(cmnd){
+        this.cmnd=cmnd;
+    }
+    setName(birth){
+        this.birth=birth;
+    }
+    setName(address){
+        this.address=address;
+    }
+    setName(customerType){
+        this.customerType=customerType;
+    }
+    setName(discount){
+        this.discount=discount;
+    }
+    setName(countPerson){
+        this.countPerson=countPerson;
+    }
+    setName(dayRent){
+        this.dayRent=dayRent;
+    }
+    setName(serviceType){
+        this.serviceType=serviceType;
+    }
+    setName(roomType){
+        this.roomType=roomType;
+    }
+    totalPay(){
+        let servicePay;
+        switch(this.serviceType){
+            case "villa":
+            servicePay=500;
+            break;
+            case "house":
+            servicePay=300;
+            break;
+            case "room":
+            servicePay=100;
+            break;
+        }
+        return servicePay*parseInt(this.dayRent)*(1-parseInt(this.discount)/100);
+    }
+}
+let customer1=new Customer("Viet","876234","12/1/1990","viet@fggd.com","DA Nang","Vip","50","4","5","villa","business");
+console.log(customer1.totalPay());
+
+function addNewCustomer(){
+    let name=prompt("Nhập tên khách hàng:");
+    let cmnd=prompt("Nhập chứng minh nhân dân:");
+    let birth=prompt("Nhập ngaỳ tháng năm sinh:");
+    let email=prompt("Nhập Email khách hàng:");
+    let address=prompt("Nhập địa chỉ:");
+    let customerType=prompt("Nhập loại khách hàng:");
+    let discount=prompt("Nhập mức giảm giá:");
+    let countPerson=prompt("Nhập số lượng khách:");
+    let dayRent=prompt("Nhập số ngày thuê:");
+    let serviceType=prompt("Nhập loại dịch vụ:");
+    let roomType=prompt("Nhập loại phòng:");
+    listCustomer.push(new Customer(name,cmnd,birth,email,address,customerType,discount,countPerson,dayRent,serviceType,roomType));
+    console.log(listCustomer);
+}
+addNewCustomer();
+    </script>
+</body>
+</html>
