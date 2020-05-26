@@ -1,123 +1,358 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <script>
-        let listCustomer=[];
-       
-class Customer{
-    constructor(name,cmnd,birth,email,address,customerType,discount,countPerson,dayRent,serviceType,roomType){
-        this.name=name;
-        this.cmnd=cmnd;
-        this.birth=birth;
-        this.email=email;
-        this.address=address;
-        this.customerType=customerType;
-        this.discount=discount;
-        this.countPerson=countPerson;
-        this.dayRent=dayRent;
-        this.serviceType=serviceType;
-        this.roomType=roomType;
-    }
-    getName(){
-       return this.name;
-    }
-    getName(){
-       return this.cmnd;
-    }
-    getName(){
-       return this.birth;
-    }
-    getName(){
-     return this.address;
-    }
-    getName(){
-     return this.customerType;
-    }
-    getName(){
-     return this.discount;
-    }
-    getName(){
-       return this.countPerson;
-    }
-    getName(){
-       return this.dayRent;
-    }
-    getName(){
-        return this.serviceType;
-    }
-    getName(){
-        return this.roomType;
-    }
-    setName(name){
-        this.name=name;
-    }
-    setName(cmnd){
-        this.cmnd=cmnd;
-    }
-    setName(birth){
-        this.birth=birth;
-    }
-    setName(address){
-        this.address=address;
-    }
-    setName(customerType){
-        this.customerType=customerType;
-    }
-    setName(discount){
-        this.discount=discount;
-    }
-    setName(countPerson){
-        this.countPerson=countPerson;
-    }
-    setName(dayRent){
-        this.dayRent=dayRent;
-    }
-    setName(serviceType){
-        this.serviceType=serviceType;
-    }
-    setName(roomType){
-        this.roomType=roomType;
-    }
-    totalPay(){
-        let servicePay;
-        switch(this.serviceType){
-            case "villa":
-            servicePay=500;
-            break;
-            case "house":
-            servicePay=300;
-            break;
-            case "room":
-            servicePay=100;
-            break;
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Khu nghỉ dưỡng Furama-Yeu cau 6</title>
+    <style>
+        .button {
+            background-color: aquamarine;
+            color: darkorange;
+            border: blue;
+            width: 150px;
+            height: 30px;
         }
-        return servicePay*parseInt(this.dayRent)*(1-parseInt(this.discount)/100);
-    }
-}
-let customer1=new Customer("Viet","876234","12/1/1990","viet@fggd.com","DA Nang","Vip","50","4","5","villa","business");
-console.log(customer1.totalPay());
+    </style>
+</head>
+<body onload="Menu()">
+<div id="result">
+</div>
+<script>
+    let dataCustomer = [];
 
-function addNewCustomer(){
-    let name=prompt("Nhập tên khách hàng:");
-    let cmnd=prompt("Nhập chứng minh nhân dân:");
-    let birth=prompt("Nhập ngaỳ tháng năm sinh:");
-    let email=prompt("Nhập Email khách hàng:");
-    let address=prompt("Nhập địa chỉ:");
-    let customerType=prompt("Nhập loại khách hàng:");
-    let discount=prompt("Nhập mức giảm giá:");
-    let countPerson=prompt("Nhập số lượng khách:");
-    let dayRent=prompt("Nhập số ngày thuê:");
-    let serviceType=prompt("Nhập loại dịch vụ:");
-    let roomType=prompt("Nhập loại phòng:");
-    listCustomer.push(new Customer(name,cmnd,birth,email,address,customerType,discount,countPerson,dayRent,serviceType,roomType));
-    console.log(listCustomer);
-}
-addNewCustomer();
-    </script>
+    class Customer {
+        constructor(name, idCard, birthday, email, address, typeCustomer, discount, rentDays, typeService, typeRoom) {
+            this.name = name;
+            this.idCard = idCard;
+            this.birthday = birthday;
+            this.email = email;
+            this.address = address;
+            this.typeCustomer = typeCustomer;
+            this.discount = discount;
+            this.rentDays = rentDays;
+            this.typeService = typeService;
+            this.typeRoom = typeRoom;
+            this.pay = 0;
+        }
+
+        getName() {
+            return this.name;
+        }
+
+        setName(name) {
+            this.name = name;
+        }
+
+        getIdCard() {
+            return this.idCard;
+        }
+
+        setIdCard(idCard) {
+            this.idCard = idCard;
+        }
+
+        payment() {
+            if (this.typeService == 'Villa') {
+                this.pay = 500*this.rentDays*(1-this.discount/100);
+            }
+            if (this.typeService == 'House') {
+                this.pay = 300*this.rentDays*(1-this.discount/100);
+            }
+            if (this.typeService == 'Room') {
+                this.pay = 100*this.rentDays*(1-this.discount/100);
+            }
+        }
+    }
+
+    function checkBirthDay(birthday) {
+        if (birthday==undefined) {birthday='';}
+        let temp = birthday.split('/');
+        let date = new Date(temp[1] + '/' + temp[0] + '/' + temp[2]);
+        do {
+            if ((date.getDate() != temp[0] * 1) || (date.getMonth() != temp[1] - 1) || (date.getFullYear() != temp[2] * 1)) {
+                birthday = prompt('Vui lòng nhập lại ngày sinh');
+                if (birthday==undefined) {birthday='';}
+                temp = birthday.split('/');
+                date = new Date(temp[1] + '/' + temp[0] + '/' + temp[2]);
+                continue;
+            }
+            return birthday;
+        } while (true)
+    }
+
+    function checkEmail(email) {
+        const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        do {
+            if (!re.test(String(email).toLowerCase())) {
+                email = prompt('Vui lòng nhập lại Email:');
+                continue;
+            }
+            return email;
+        } while (true)
+    }
+
+    function AddNewCustomer() {
+        let result = document.getElementById('result');
+        let customer = new Customer();
+        customer.name = prompt('Nhập tên:');
+        customer.idCard = prompt('Nhập chứng minh nhân dân:');
+        customer.birthday = prompt('Nhập ngày tháng năm sinh:');
+        customer.birthday = checkBirthDay(customer.birthday);
+        customer.email = prompt('Nhập địa chỉ email:');
+        customer.email = checkEmail(customer.email);
+        customer.address = prompt('Nhập địa chỉ:');
+        customer.typeCustomer = prompt('Nhập thẻ thành viên:');
+        customer.discount = prompt('Nhập mã giảm giá:');
+        customer.rentDays = prompt('Nhập số ngày thuê:');
+        customer.typeService = prompt('Nhập loại phòng:');
+        customer.typeRoom = prompt('Nhập chất lượng phòng:');
+        customer.payment();
+        dataCustomer.push(customer);
+    }
+
+    function Show() {
+        let result = document.getElementById('result');
+        let showinfo = document.getElementById('showinfo');
+        let num = showinfo.value - 1;
+        if ((num >= 0) && (num < dataCustomer.length)) {
+            let str = '<h1>Show Customer</h1>';
+            str += '<b>Họ Tên(Name):</b> ' + dataCustomer[num].name + '<br><br>';
+            str += '<b>Chứng Minh Nhân Dân(IdCard):</b> ' + dataCustomer[num].idCard + '<br><br>';
+            str += '<b>Ngày tháng năm sinh(Birthday):</b> ' + dataCustomer[num].birthday + '<br><br>';
+            str += '<b>Địa chỉ email(Email):</b> ' + dataCustomer[num].email + '<br><br>';
+            str += '<b>Địa chỉ(Address):</b> ' + dataCustomer[num].address + '<br><br>';
+            str += '<b>Thẻ thành viên(TypeCustomer):</b> ' + dataCustomer[num].typeCustomer + '<br><br>';
+            str += '<b>Mã giảm giá(Discount):</b> ' + dataCustomer[num].discount + '<br><br>';
+            str += '<b>Số ngày thuê(RentDays):</b> ' + dataCustomer[num].rentDays + '<br><br>';
+            str += '<b>Loại phòng(TypeService):</b> ' + dataCustomer[num].typeService + '<br><br>';
+            str += '<b>Chất lượng phòng(TypeRoom):</b> ' + dataCustomer[num].typeRoom + '<br><br>';
+            str += '<input id="showinfo" type="text">';
+            str += '<button onclick="Show()">Show</button>' + '<br><br>';
+            str += '<button onclick="Menu()">Quay lai menu</button>' + '<br><br>';
+            result.innerHTML = str;
+        } else {
+            alert('Bạn đã nhập sai!! Yêu cầu nhập lại');
+        }
+
+    }
+
+    function ShowCustomer() {
+        let result = document.getElementById('result');
+        let str = '<h1>Show Customer</h1>';
+        for (let i = 0; i < dataCustomer.length; i++) {
+            str += '<b>No.</b>' + (i + 1) + ' <b>Name:</b>' + dataCustomer[i].name;
+            str += ' <b>CMND:</b>' + dataCustomer[i].idCard;
+            str += '<br><br>';
+        }
+        str += '<input id="showinfo" type="text">';
+        str += '<button onclick="Show()">Show</button><br>';
+        str += '<button onclick="Menu()">Quay lai menu</button>' + '<br><br>';
+        result.innerHTML = str;
+    }
+
+    function Change(num, editDetailCustomer, valueDetailCustomer) {
+        if (editDetailCustomer == 'Name') {
+            dataCustomer[num].name = valueDetailCustomer;
+        }
+        if (editDetailCustomer == 'IdCard') {
+            dataCustomer[num].idCard = valueDetailCustomer;
+        }
+        if (editDetailCustomer == 'Birthday') {
+            dataCustomer[num].birthday = valueDetailCustomer;
+            dataCustomer[num].birthday = checkBirthDay(dataCustomer[num].birthday);
+        }
+        if (editDetailCustomer == 'Email') {
+            dataCustomer[num].email = valueDetailCustomer;
+            dataCustomer[num].email = checkEmail(dataCustomer[num].email);
+        }
+        if (editDetailCustomer == 'Address') {
+            dataCustomer[num].address = valueDetailCustomer;
+        }
+        if (editDetailCustomer == 'TypeCustomer') {
+            dataCustomer[num].typeCustomer = valueDetailCustomer;
+        }
+        if (editDetailCustomer == 'Discount') {
+            dataCustomer[num].discount = valueDetailCustomer;
+        }
+        if (editDetailCustomer == 'RentDays') {
+            dataCustomer[num].rentDays = valueDetailCustomer;
+        }
+        if (editDetailCustomer == 'TypeService') {
+            dataCustomer[num].typeService = valueDetailCustomer;
+        }
+        if (editDetailCustomer == 'TypeRoom') {
+            dataCustomer[num].typeRoom = valueDetailCustomer;
+        }
+    }
+
+    function EditDetail() {
+        let result = document.getElementById('result');
+        let editInfo = document.getElementById('editInfo');
+        let editDetailCustomer = document.getElementById('editDetailCustomer');
+        let valueDetailCustomer = document.getElementById('valueDetailCustomer');
+        let num = editInfo.value - 1;
+        if ((num >= 0) && (num < dataCustomer.length)) {
+            Change(num, editDetailCustomer.value, valueDetailCustomer.value);
+            let str = '<h1>Edit Customer</h1>';
+            str += '<b>Họ Tên(Name):</b> ' + dataCustomer[num].name + '<br><br>';
+            str += '<b>Chứng Minh Nhân Dân(IdCard):</b> ' + dataCustomer[num].idCard + '<br><br>';
+            str += '<b>Ngày tháng năm sinh(Birthday):</b> ' + dataCustomer[num].birthday + '<br><br>';
+            str += '<b>Địa chỉ email(Email):</b> ' + dataCustomer[num].email + '<br><br>';
+            str += '<b>Địa chỉ(Address):</b> ' + dataCustomer[num].address + '<br><br>';
+            str += '<b>Thẻ thành viên(TypeCustomer):</b> ' + dataCustomer[num].typeCustomer + '<br><br>';
+            str += '<b>Mã giảm giá(Discount):</b> ' + dataCustomer[num].discount + '<br><br>';
+            str += '<b>Số ngày thuê(RentDays):</b> ' + dataCustomer[num].rentDays + '<br><br>';
+            str += '<b>Loại phòng(TypeService):</b> ' + dataCustomer[num].typeService + '<br><br>';
+            str += '<b>Chất lượng phòng(TypeRoom):</b> ' + dataCustomer[num].typeRoom + '<br><br>';
+            dataCustomer[num].payment();
+            str += '<input id="editInfo" type="text" value="' + editInfo.value + '">';
+            str += '<input id="editDetailCustomer" type="text" value="' + editDetailCustomer.value + '">';
+            str += '<input id="valueDetailCustomer" type="text" value="' + valueDetailCustomer.value + '">';
+            str += '<button onclick="EditDetail()">Edit</button>' + '<br><br>';
+            str += '<button onclick="Menu()">Quay lai menu</button>' + '<br><br>';
+            result.innerHTML = str;
+        } else {
+            alert('Bạn đã nhập sai!! Yêu cầu nhập lại');
+        }
+
+    }
+
+    function Edit() {
+        let result = document.getElementById('result');
+        let editInfo = document.getElementById('editInfo');
+        let num = editInfo.value - 1;
+        if ((num >= 0) && (num < dataCustomer.length)) {
+            let str = '<h1>Edit Customer</h1>';
+            str += '<b>Họ Tên(Name):</b> ' + dataCustomer[num].name + '<br><br>';
+            str += '<b>Chứng Minh Nhân Dân(IdCard):</b> ' + dataCustomer[num].idCard + '<br><br>';
+            str += '<b>Ngày tháng năm sinh(Birthday):</b> ' + dataCustomer[num].birthday + '<br><br>';
+            str += '<b>Địa chỉ email(Email):</b> ' + dataCustomer[num].email + '<br><br>';
+            str += '<b>Địa chỉ(Address):</b> ' + dataCustomer[num].address + '<br><br>';
+            str += '<b>Thẻ thành viên(TypeCustomer):</b> ' + dataCustomer[num].typeCustomer + '<br><br>';
+            str += '<b>Mã giảm giá(Discount):</b> ' + dataCustomer[num].discount + '<br><br>';
+            str += '<b>Số ngày thuê(RentDays):</b> ' + dataCustomer[num].rentDays + '<br><br>';
+            str += '<b>Loại phòng(TypeService):</b> ' + dataCustomer[num].typeService + '<br><br>';
+            str += '<b>Chất lượng phòng(TypeRoom):</b> ' + dataCustomer[num].typeRoom + '<br><br>';
+            str += '<input id="editInfo" type="text" value="' + editInfo.value + '">';
+            str += '<input id="editDetailCustomer" type="text" value="Thuộc tính muốn thay đổi">';
+            str += '<input id="valueDetailCustomer" type="text" value="Giá trị muốn thay đổi">';
+            str += '<button onclick="EditDetail()">Edit</button>' + '<br><br>';
+            str += '<button onclick="Menu()">Quay lai menu</button>' + '<br><br>';
+            result.innerHTML = str;
+        } else {
+            alert('Bạn đã nhập sai!! Yêu cầu nhập lại');
+        }
+
+    }
+
+    function EditCustomer() {
+        let result = document.getElementById('result');
+        let str = '<h1>Edit Customer</h1>';
+        for (let i = 0; i < dataCustomer.length; i++) {
+            str += '<b>No.</b>' + (i + 1) + ' <b>Name:</b>' + dataCustomer[i].name;
+            str += ' <b>CMND:</b>' + dataCustomer[i].idCard;
+            str += '<br><br>';
+        }
+        str += '<input id="editInfo" type="text">';
+        str += '<button onclick="Edit()">Edit</button><br>';
+        str += '<button onclick="Menu()">Quay lai menu</button>' + '<br><br>';
+        result.innerHTML = str;
+    }
+
+    function Delete() {
+        let result = document.getElementById('result');
+        let deleteInfo = document.getElementById('deleteInfo');
+        let num = deleteInfo.value - 1;
+        if ((num >= 0) && (num < dataCustomer.length)) {
+            dataCustomer.splice(num, 1);
+            let str = '<h1>Delete Customer</h1>';
+            for (let i = 0; i < dataCustomer.length; i++) {
+                str += '<b>No.</b>' + (i + 1) + ' <b>Name:</b>' + dataCustomer[i].name;
+                str += ' <b>CMND:</b>' + dataCustomer[i].idCard;
+                str += '<br><br>';
+            }
+            str += '<input id="deleteInfo" type="text">';
+            str += '<button onclick="Delete()">Delete</button><br>';
+            str += '<button onclick="Menu()">Quay lai menu</button>' + '<br><br>';
+            result.innerHTML = str;
+        } else {
+            alert('Bạn đã nhập sai!! Yêu cầu nhập lại');
+        }
+    }
+
+    function DeleteCustomer() {
+        let result = document.getElementById('result');
+        let str = '<h1>Delete Customer</h1>';
+        for (let i = 0; i < dataCustomer.length; i++) {
+            str += '<b>No.</b>' + (i + 1) + ' <b>Name:</b>' + dataCustomer[i].name;
+            str += ' <b>CMND:</b>' + dataCustomer[i].idCard;
+            str += '<br><br>';
+        }
+        str += '<input id="deleteInfo" type="text">';
+        str += '<button onclick="Delete()">Delete</button><br>';
+        str += '<button onclick="Menu()">Quay lai menu</button>' + '<br><br>';
+        result.innerHTML = str;
+    }
+
+    function ExitMenu() {
+        let result = document.getElementById('result');
+        let check = confirm('Bạn thực sự muốn thoát chứ????');
+        if (check) {
+            result.innerHTML = '';
+        }
+    }
+
+    function DisplayPay() {
+        let result = document.getElementById('result');
+        let showinfo = document.getElementById('showinfo');
+        let num = showinfo.value - 1;
+        if ((num >= 0) && (num < dataCustomer.length)) {
+            let str = '<h1>Display Total Pay</h1>';
+            str += '<b>Họ Tên(Name):</b> ' + dataCustomer[num].name + '<br><br>';
+            str += '<b>Chứng Minh Nhân Dân(IdCard):</b> ' + dataCustomer[num].idCard + '<br><br>';
+            str += '<b>Ngày tháng năm sinh(Birthday):</b> ' + dataCustomer[num].birthday + '<br><br>';
+            str += '<b>Mã giảm giá(Discount):</b> ' + dataCustomer[num].discount + '<br><br>';
+            str += '<b>Số ngày thuê(RentDays):</b> ' + dataCustomer[num].rentDays + '<br><br>';
+            str += '<b>Loại phòng(TypeService):</b> ' + dataCustomer[num].typeService + '<br><br>';
+            str += '<b>Chất lượng phòng(TypeRoom):</b> ' + dataCustomer[num].typeRoom + '<br><br>';
+            str += '<b>Số tiền phải thanh toán:</b> ' + dataCustomer[num].pay + '<br><br>';
+            str += '<input id="showinfo" type="text">';
+            str += '<button onclick="DisplayPay()">Show</button>' + '<br><br>';
+            str += '<button onclick="Menu()">Quay lai menu</button>' + '<br><br>';
+            result.innerHTML = str;
+        } else {
+            alert('Bạn đã nhập sai!! Yêu cầu nhập lại');
+        }
+
+    }
+
+    function DisplayTotalPay() {
+        let result = document.getElementById('result');
+        let str = '<h1>Display Total Pay</h1>';
+        for (let i = 0; i < dataCustomer.length; i++) {
+            str += '<b>No.</b>' + (i + 1) + ' <b>Name:</b>' + dataCustomer[i].name;
+            str += ' <b>CMND:</b>' + dataCustomer[i].idCard;
+            str += '<br><br>';
+        }
+        str += '<input id="showinfo" type="text">';
+        str += '<button onclick="DisplayPay()">Show</button><br>';
+        str += '<button onclick="Menu()">Quay lai menu</button>' + '<br><br>';
+        result.innerHTML = str;
+    }
+
+    function Menu() {
+        let result = document.getElementById('result');
+        let str = '<h1>Furama Resort Yeu Cau 6</h1>';
+        str += '<button class="button" onclick="AddNewCustomer()">1.Add New Customer</button><br><br>';
+        str += '<button class="button" onclick="ShowCustomer()">2.Show Customer Infomation</button><br><br>';
+        str += '<button class="button" onclick="DisplayTotalPay()">3.Show Total Pay</button><br><br>';
+        str += '<button class="button" onclick="EditCustomer()">4.Edit Customer</button><br><br>';
+        str += '<button class="button" onclick="DeleteCustomer()">5.Delete Customer</button><br><br>';
+        str += '<button class="button" onclick="ExitMenu()">6.Exit Menu</button><br><br>';
+        result.innerHTML = str;
+    }
+</script>
 </body>
 </html>
