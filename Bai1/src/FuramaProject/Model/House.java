@@ -11,6 +11,36 @@ public class House extends Services {
         this.features = features;
         this.countFloor = countFloor;
     }
+    public String getIds(){
+        return this.getId();
+    }
+    public String getServiceNames(){
+        return this.getServiceName();
+    }
+    public double getAreaUses(){
+        return this.getAreaUse();
+    }
+    public double getCosts(){
+        return this.getCost();
+    }
+    public double getCountPersons(){
+        return this.getCountPerson();
+    }
+    public String getRentTypes(){
+        return this.getRentType();
+    }
+
+    public String getRoomStandard() {
+        return roomStandard;
+    }
+
+    public String getFeatures() {
+        return features;
+    }
+
+    public String getCountFloor() {
+        return countFloor;
+    }
 
     @Override
     public void showInfo() {

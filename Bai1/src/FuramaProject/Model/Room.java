@@ -8,6 +8,10 @@ public class Room extends Services {
         this.otherService = otherService;
     }
 
+    public String getOtherService() {
+        return otherService;
+    }
+
     @Override
     public void showInfo() {
         System.out.println("Ten dich vu: "+this.getServiceName()+"; Dien tich Su dung: "+this.getAreaUse()+";" +
