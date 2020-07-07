@@ -1,6 +1,6 @@
 package FuramaProject.Model;
 
-public class House extends Services {
+public class House extends Services implements Comparable<House> {
     private String roomStandard;
     private String features;
     private String countFloor;
@@ -47,5 +47,10 @@ public class House extends Services {
         System.out.println("Ten dich vu: "+this.getServiceName()+"; Dien tich Su dung: "+this.getAreaUse()+";" +
                 " Thanh Toan: "+this.getCost()+"; So luong nguoi:"+this.getCountPerson()+"; Loai dich vu: "+this.getRentType()
                 +"; Tieu chuan phong: "+this.roomStandard+"; Tien ich khac: "+this.features+"; So tang: "+this.countFloor);
+    }
+
+    @Override
+    public int compareTo(House o) {
+        return this.getServiceName().compareTo(o.getServiceName());
     }
 }

@@ -1,6 +1,6 @@
 package FuramaProject.Model;
 
-public class Villa extends Services {
+public class Villa extends Services implements Comparable<Villa> {
     private String roomStandard;
     private String features;
     private String poolArea;
@@ -49,10 +49,24 @@ public class Villa extends Services {
     }
 
     @Override
+    public boolean equals(Object obj) {
+        Villa obj1=(Villa) obj;
+        if(this.getServiceName().equals(obj1.getServiceName())){
+            return true;
+        }else return false;
+
+    }
+
+    @Override
     public void showInfo() {
         System.out.println("Ten dich vu: "+this.getServiceName()+"; Dien tich Su dung: "+this.getAreaUse()+";" +
                 " Thanh Toan: "+this.getCost()+"; So luong nguoi:"+this.getCountPerson()+"; Loai dich vu: "+this.getRentType()
         +"; Tieu chuan phong: "+this.roomStandard+"; Tien ich khac: "+this.features+"; Dien tich ho boi: "+this.poolArea+
                 "; So tang: "+this.countFloor);
+    }
+
+    @Override
+    public int compareTo(Villa o) {
+        return this.getServiceName().compareTo(o.getServiceName());
     }
 }

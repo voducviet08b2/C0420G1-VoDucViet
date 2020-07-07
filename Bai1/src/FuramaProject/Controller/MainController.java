@@ -3,11 +3,10 @@ package FuramaProject.Controller;
 import FuramaProject.Compare.CompareCustomer;
 import FuramaProject.Exception.*;
 import FuramaProject.Model.*;
+import MapTree.Student;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Scanner;
+import java.util.*;
 import java.util.regex.Pattern;
 
 public class MainController {
@@ -15,7 +14,7 @@ public class MainController {
         Scanner scanner=new Scanner(System.in);
         System.out.println("1. Add New Services \n 2. Show Services \n 3. Add New Customer " +
                 "\n 4. Show Info Of Customer \n 5. Add New Booking \n 6. Show Information of Employee" +
-                "\n 7. Exit \n Please Choice: ");
+                "\n 7. Cinema 4D \n 8. Search Employee \n 9. Exit \n Please Choice: ");
         int choice=scanner.nextInt();
         switch(choice){
             case 1:
@@ -41,8 +40,86 @@ public class MainController {
             case 5:
                 addNewBooking();
                 break;
+            case 6:
+                showInfoEmployee();
+                break;
+            case 7:
+                ticketCinema();
+                break;
+            case 8:
+                showInfoEmployeeQueue();
+                break;
         }
     }
+
+    private static void showInfoEmployeeQueue() {
+        FileStore<Employee> file=new FileStore<>();
+        file.store();
+    }
+
+    private static void ticketCinema() {
+        ArrayList<Customer> listCustomer=new ArrayList<>();
+        StringBuffer stringBuffer=new StringBuffer();
+        try{
+            FileReader fileReader=new FileReader("src\\FuramaProject\\data\\customer.csv");
+            BufferedReader bufferedReader=new BufferedReader(fileReader);
+            String line=null;
+            String[] str;
+            while((line=bufferedReader.readLine())!=null){
+                str=line.split(",");
+                listCustomer.add(new Customer(str[0],str[1],str[2],str[3],str[4],str[5],str[6],str[7],null));
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Queue<Customer> queueCustomer;
+        queueCustomer = new LinkedList<>();
+        for (int i = 0; i < listCustomer.size(); i++) {
+            queueCustomer.add(listCustomer.get(i));
+            System.out.print(i+". ");
+            listCustomer.get(i).showInfo();
+        }
+        System.out.println("--------------------------------");
+        System.out.println("Danh sach sau khi cho vao queue va lay ra:");
+        for (int i = 0; i < listCustomer.size(); i++) {
+            System.out.println(queueCustomer.remove());
+
+        }
+
+    }
+
+    private static void showInfoEmployee() {
+        StringBuffer result=new StringBuffer();
+        try {
+            FileReader fileReader=new FileReader("src/FuramaProject/data/employee.csv");
+            BufferedReader buffer=new BufferedReader(fileReader);
+            result=new StringBuffer();
+            String line=null;
+            while((line=buffer.readLine())!=null){
+                result.append(line);
+            }
+            buffer.close();
+            fileReader.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        String s= String.valueOf(result);
+        String[] word=String.valueOf(result).split(",");
+
+       // ArrayList<Room> listRoom=new ArrayList<>();
+        Map<Integer,Employee> mapEmployee=new HashMap<>();
+        int i=0;
+        int j=0;
+        while(i<word.length){
+
+            mapEmployee.put(j++,new Employee(word[i],Integer.parseInt(word[i+1]),word[i+2]));
+            i+=3;
+        }
+        for(Map.Entry<Integer, Employee> employee : mapEmployee.entrySet()){
+            System.out.println(employee.toString());
+        }
+    }
+
     public static void addNewBooking(){
         Scanner scanner=new Scanner(System.in);
         ArrayList<Customer> listCustomer=new ArrayList<>();
@@ -143,7 +220,7 @@ public class MainController {
             FileReader fileReader=new FileReader("src/FuramaProject/data/house.csv");
             BufferedReader buffer=new BufferedReader(fileReader);
             result=new StringBuffer();
-            String line=null;
+            String line;
             while((line=buffer.readLine())!=null){
                 result.append(line);
             }
@@ -152,7 +229,7 @@ public class MainController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        String s= String.valueOf(result);
+
         String[] word=String.valueOf(result).split(",");
 
         ArrayList<House> listHouse=new ArrayList<>();
@@ -554,12 +631,116 @@ public class MainController {
             case 3:
                 showAllRoom();
                 break;
+            case 4:
+                showAllVillaNotDuplicate();
+                break;
+            case 5:
+                showAllHouseNotDuplicate();
+                break;
+            case 6:
+                showAllRoomNotDuplicate();
+                break;
             case 7:
                 displayMainMenu();
                 break;
+
         }
 
     }
+
+    private static void showAllRoomNotDuplicate() {
+        StringBuffer result=new StringBuffer();
+        try {
+            FileReader fileReader=new FileReader("src/FuramaProject/data/room.csv");
+            BufferedReader buffer=new BufferedReader(fileReader);
+            result=new StringBuffer();
+            String line=null;
+            while((line=buffer.readLine())!=null){
+                result.append(line);
+            }
+            buffer.close();
+            fileReader.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        String s= String.valueOf(result);
+        String[] word=String.valueOf(result).split(",");
+
+        // ArrayList<Villa> listVilla=new ArrayList<>();
+        Set<Room> setRoom=new TreeSet<>();
+        int i=0;
+        while(i<word.length){
+            setRoom.add(new Room(word[i],word[i+1],Double.parseDouble(word[i+2]),Double.parseDouble(word[i+3]),
+                    Double.parseDouble(word[i+4]),word[i+5],word[i+6]));
+            i+=7;
+        }
+        for(Room room:setRoom){
+            room.showInfo();
+        }
+    }
+
+    private static void showAllHouseNotDuplicate() {
+        StringBuffer result=new StringBuffer();
+        try {
+            FileReader fileReader=new FileReader("src/FuramaProject/data/house.csv");
+            BufferedReader buffer=new BufferedReader(fileReader);
+            result=new StringBuffer();
+            String line=null;
+            while((line=buffer.readLine())!=null){
+                result.append(line);
+            }
+            buffer.close();
+            fileReader.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        String s= String.valueOf(result);
+        String[] word=String.valueOf(result).split(",");
+
+        // ArrayList<Villa> listVilla=new ArrayList<>();
+        Set<House> setHouse=new TreeSet<>();
+        int i=0;
+        while(i<word.length){
+            setHouse.add(new House(word[i],word[i+1],Double.parseDouble(word[i+2]),Double.parseDouble(word[i+3]),
+                    Double.parseDouble(word[i+4]),word[i+5],word[i+6],word[i+7],word[i+8]));
+            i+=9;
+        }
+        for(House house:setHouse){
+            house.showInfo();
+        }
+    }
+
+    private static void showAllVillaNotDuplicate() {
+        StringBuffer result=new StringBuffer();
+        try {
+            FileReader fileReader=new FileReader("src/FuramaProject/data/villa.csv");
+            BufferedReader buffer=new BufferedReader(fileReader);
+            result=new StringBuffer();
+            String line=null;
+            while((line=buffer.readLine())!=null){
+                result.append(line);
+            }
+            buffer.close();
+            fileReader.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        String s= String.valueOf(result);
+        String[] word=String.valueOf(result).split(",");
+
+       // ArrayList<Villa> listVilla=new ArrayList<>();
+        Set<Villa> setVilla=new TreeSet<>();
+        int i=0;
+        while(i<word.length){
+            setVilla.add(new Villa(word[i],word[i+1],Double.parseDouble(word[i+2]),Double.parseDouble(word[i+3]),
+                    Double.parseDouble(word[i+4]),word[i+5],word[i+6],word[i+7],word[i+8],Integer.parseInt(word[i+9])));
+            i+=10;
+        }
+        for(Villa villa:setVilla){
+            villa.showInfo();
+        }
+    }
+
     public static void showAllVilla(){
         StringBuffer result=new StringBuffer();
         try {
